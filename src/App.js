@@ -1,18 +1,19 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./App";
 import Menu from "./components/Menu.js";
 import CrearObjetivoPalanca from './containers/CrearObjetivoPalanca.js';
 import ObjetivoPalanca from './containers/ObjetivoPalanca';
+import Home from './components/Home';
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      pathname: '',
+      pathname: '/',
     };
 
     this.nombrePath = this.nombrePath.bind(this);
@@ -34,9 +35,16 @@ class App extends Component {
             nombrePath={this.nombrePath}
             pathname={this.state.pathname}
           />
-
+          <Redirect
+            from="/"
+            to="/home" />
           <Switch>
 
+            <Route
+              path="/home"
+              exact
+              component={() => <Home />}
+            />
             <Route
               path="/objetivos"
               exact
