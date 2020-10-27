@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+  color: rgb(39, 76, 242);
+  font-size: 4.5rem;
+}
+
+.centrado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

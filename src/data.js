@@ -1,5 +1,5 @@
 
-export const datos = [
+const datos = [
     {
         anio: 2024,
         codigo: 1,
@@ -10,3 +10,5 @@ export const datos = [
         ]
     }
 ];
+
+export default datos;

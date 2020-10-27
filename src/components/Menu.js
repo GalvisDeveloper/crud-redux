@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import "./Nav.css";
+import "./styles/Menu.css";
 import logo from "../img/logo.PNG";
 import { Link } from 'react-router-dom';
 
@@ -11,14 +11,10 @@ class Menu extends Component {
         super(props);
     }
 
-    accionarComponente() {
-        this.props.nombrePath(window.location.pathname);
-    }
-
     render() {
         return (
-            <div className="container" >
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" >
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
+                <div className="container" >
                     <div className="logo">
                         <img src={logo} alt="" />
                     </div>
@@ -31,18 +27,18 @@ class Menu extends Component {
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
                                 <div className="navegacion">
-                                    <Link to="">Inicio</Link> {/*En construccion*/}
-                                    <Link to="">Servicios</Link> {/*En construccion*/}
-                                    <Link to="">Nuestro Personal</Link> {/*En construccion*/}
-                                    <Link to="/objetivos" > PALANCAS Y OBJETIVOS </Link>
-                                    <Link to="">Ayuda</Link> {/*En construccion*/}
+                                    <Link to="/home">Inicio</Link> {/*En construccion*/}
+                                    <Link to="/enConstruccion">Servicios</Link> {/*En construccion*/}
+                                    <Link to="/enConstruccion">Nuestro Personal</Link> {/*En construccion*/}
+                                    <Link to="/crearObjetivo-Palanca" > PALANCAS Y OBJETIVOS </Link>
+                                    <Link to="/enConstruccion">Ayuda</Link> {/*En construccion*/}
                                 </div>
                             </li>
                         </ul>
                     </div>
 
-                </nav>
-            </div>
+                </div>
+            </nav>
         )
     }
 }

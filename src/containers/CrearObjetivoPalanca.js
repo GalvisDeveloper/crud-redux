@@ -1,70 +1,123 @@
 
 
-import React, { Component } from 'react';
-import './CrearObjetivoPalanca.css';
+import React, { useState } from 'react';
+import './styles/CrearObjetivoPalanca.css';
 import uniqid from "uniqid";
-class CrearObjetivoPalanca extends Component {
+import datos from '../data';
+import ObjetivoPalanca from './ObjetivoPalanca';
+import { Link } from 'react-router-dom';
 
-    constructor(props) {
-        super(props);
+const CrearObjetivoPalanca = () => {
 
-        this.state = {
-            anios: this.arreglo(),
-        };
-    }
-
-    arreglo() {
+    // seleccion del año
+    const arreglo = () => {
         var numeros = [];
-        for (let index = 1900; index < 2101; index++) {
+        for (let index = 2000; index < 2101; index++) {
             numeros.push(index);
         }
         return numeros;
     }
 
-    render() {
+    const [anios] = useState(arreglo());
 
-        const { anios } = this.state;
+    // valores de los inputs
+    const [anio, setAnio] = useState('');
+    const [descripcion, setDescripcion] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [data, setData] = useState(datos);
 
-        return (
-            <div className="crearObjetivo">
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="anio">Elige el año</label>
-                        <select name="anio" id="anio">
-                            {anios.map(a => <option key={uniqid()}>{a}</option>)}
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="codigo"
-                            placeholder="Insertar Codigo"
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="descripcion"
-                            placeholder="Insertar Descripcion"
-                            required
-                        />
-                    </div>
+    // // valores que recibe el formulario
+    const [values, setValues] = useState([{
+        values: {
+            anio: '',
+            tipo: '',
+            descripcion: '',
+        }
+    }]);
 
-                    <div className="form-group">
-                        <button className="btn btn-primary" type="submit">
-                            Añadir
-                        </button>
-                        <button className="btn btn-default" type="button">
-                            Cancelar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        );
+    const anioChange = (e) => {
+        console.log('Seleccion: ' + e.target.value);
+        setAnio(e.target.value);
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     setData(d => [...data, d]);
+    // }
+
+    const handleDescripcion = (e) => {
+        setDescripcion(e.target.value);
+    }
+
+    return (
+
+        <div className="crearObjetivo">
+            <form >
+                <div className="form-group">
+                    <ObjetivoPalanca setTipo={setTipo} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="anio">Elige el año</label>
+                    <select
+                        value={anio}
+                        name="anio"
+                        id="anio"
+                        onChange={anioChange}
+                    >
+                        {
+                            anios.map(a =>
+                                <option
+                                    value={a}
+                                    key={uniqid()}
+                                >
+                                    {a}
+                                </option>
+                            )
+                        }
+                    </select>
+                </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="codigo"
+                        value={datos[datos.length - 1].codigo + 1}
+                        disabled
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="descripcion"
+                        placeholder="Insertar Descripcion"
+                        onChange={handleDescripcion}
+                        value={descripcion}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="codigo"
+                        value={tipo}
+                        disabled
+                    />
+                </div>
+
+                <div className="form-group">
+                    <button className="btn btn-primary" type="submit">
+                        Añadir
+                    </button>
+                    <Link to="/objetivos-palancas" className="btn btn-default" type="button">
+                        Cancelar
+                    </Link>
+                </div>
+            </form>
+        </div>
+    );
+
 }
 
 export default CrearObjetivoPalanca;

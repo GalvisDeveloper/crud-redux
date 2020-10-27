@@ -4,10 +4,13 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./App";
+
 import Menu from "./components/Menu.js";
 import CrearObjetivoPalanca from './containers/CrearObjetivoPalanca.js';
 import ObjetivoPalanca from './containers/ObjetivoPalanca';
 import Home from './components/Home';
+import Building from './components/Building';
+import NotFound from './components/NotFound';
 class App extends Component {
 
   constructor(props) {
@@ -25,7 +28,10 @@ class App extends Component {
     });
   }
 
+  noMatch = this.useLocation;
+
   render() {
+
     return (
 
       <Router>
@@ -35,9 +41,11 @@ class App extends Component {
             nombrePath={this.nombrePath}
             pathname={this.state.pathname}
           />
-          <Redirect
+
+          {/* <Redirect
             from="/"
-            to="/home" />
+            to="/home" /> */}
+
           <Switch>
 
             <Route
@@ -46,25 +54,32 @@ class App extends Component {
               component={() => <Home />}
             />
             <Route
-              path="/objetivos"
+              path="/objetivos-palancas"
               exact
               component={() => <ObjetivoPalanca />}
             />
             <Route
-              path="/crearObjetivo"
+              path="/crearObjetivo-Palanca/"
               exact
               component={() => <CrearObjetivoPalanca />}
             />
             <Route
-              path="/editarObjetivo/:codigo"
+              path="/editarObjetivo-Palanca/:codigo"
               exact
               component={() => <ObjetivoPalanca />}
             />
-
+            <Route
+              path="/enConstruccion/"
+              exact
+              component={() => <Building />}
+            />
+            <Route
+              component={NotFound}
+            />
           </Switch>
 
         </div>
-      </Router>
+      </Router >
     );
   }
 }

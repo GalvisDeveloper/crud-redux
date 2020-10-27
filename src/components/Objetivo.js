@@ -1,11 +1,12 @@
 
 import React from 'react';
+import './Objetivo';
 
 const Objetivo = ({ obj }) => {
     return (
         <tr>
-            <td>{obj.codigo}</td>
             <td>{obj.anio}</td>
+            <td>{obj.codigo}</td>
             <td>{obj.descripcion}</td>
             <td>
                 <button type="button" className="btn btn-danger">
