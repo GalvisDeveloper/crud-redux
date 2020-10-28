@@ -50,6 +50,7 @@ class App extends Component {
               exact
               component={() => <Home />}
             />
+
             <Route
               path=""
               exact
