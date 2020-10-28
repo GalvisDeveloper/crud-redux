@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { fetchObjetivoPalanca } from './actions/objetivo_palanca.actions.js';
+import fetchObjetivoPalanca from './actions/objetivo_palanca.actions.js';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createBrowserHistory } from "history";
@@ -20,9 +20,11 @@ import { createBrowserHistory } from "history";
 // export const history = createBrowserHistory({ forceRefresh: true });
 
 ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+  // <Provider store={store}>
+  <Router>
+    <App />
+  </Router>,
+  // </Provider>,
   document.getElementById('root')
 );
 
