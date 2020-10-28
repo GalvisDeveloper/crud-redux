@@ -5,6 +5,7 @@ import './styles/ObjetivoPalanca.css';
 import datos from '../data';
 import Objetivo from '../components/Objetivo';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 const ObjetivoPalanca = ({ setTipo }) => {
 
@@ -76,7 +77,7 @@ const ObjetivoPalanca = ({ setTipo }) => {
                             Por favor, seleccione que desea crear
                         </div>
                         <div className="modal-footer">
-                            <button type = "submit" onClick={handleSubmitPalanca} onSubmit={handleSubmitPalanca} className="btn btn-primary" data-dismiss="modal">Palanca</button>
+                            <button type="submit" onClick={handleSubmitPalanca} onSubmit={handleSubmitPalanca} className="btn btn-primary" data-dismiss="modal">Palanca</button>
                             <button onClick={handleSubmitObjetivo} className="btn btn-info" data-dismiss="modal">Objetivo</button>
                         </div>
                     </div>
@@ -88,4 +89,12 @@ const ObjetivoPalanca = ({ setTipo }) => {
 
 }
 
+
 export default ObjetivoPalanca;
+// const mapStateToProps = (state) => {
+//     return {
+//         objetivos_palancas: state.objetivos_palancasData || [],
+//     }
+// }
+
+// export default connect(mapStateToProps, null)(ObjetivoPalanca);

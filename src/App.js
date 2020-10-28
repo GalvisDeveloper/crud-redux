@@ -28,8 +28,6 @@ class App extends Component {
     });
   }
 
-  noMatch = this.useLocation;
-
   render() {
 
     return (
@@ -47,12 +45,17 @@ class App extends Component {
             to="/home" /> */}
 
           <Switch>
-
             <Route
               path="/home"
               exact
               component={() => <Home />}
             />
+            <Route
+              path=""
+              exact
+              component={() => <Home />}
+            />
+
             <Route
               path="/objetivos-palancas"
               exact
@@ -74,7 +77,7 @@ class App extends Component {
               component={() => <Building />}
             />
             <Route
-              component={NotFound}
+              component={() => <NotFound />}
             />
           </Switch>
 
